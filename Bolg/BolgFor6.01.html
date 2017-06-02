@@ -7,7 +7,7 @@
 		<meta name="description" content="">
 		<meta name="author" content="">
 
-		<title>MyBolgTest</title>
+		<title>关于优化</title>
 
 		<!-- css -->
 		<link rel="stylesheet" href="../css/bootstrap.min.css">
@@ -17,6 +17,8 @@
 		<link href="../css/animations.css" rel="stylesheet" />
 		<link href="../css/style.css" rel="stylesheet">
 		<link href="../color/default.css" rel="stylesheet">
+		
+		<link href="../css/myStyle.css" />
 		<!-- =======================================================
         My Name: KLWWWWWWW
         Made URL: https://bootstrapmade.com/
@@ -74,7 +76,7 @@
 					<div class="col-lg-8 col-lg-offset-2">
 						<div class="animatedParent">
 							<div class="section-heading text-center animated bounceInDown">
-								<h2 class="h-bold">!!!!</h2>
+								<h2 class="h-bold">关于客户端优化的问题</h2>
 								<div class="divider-header"></div>
 							</div>
 						</div>
@@ -88,13 +90,57 @@
 				<div class="row">
 
 					<div class="col-lg-8 col-lg-offset-2 animatedParent">
-						<div class="text-center">
+						<div class="text-left">
 							<p style="font-family: '微软雅黑';font-size: 20px;word-wrap: break-word;text-indent:2em;">
-								//请在这里书写
+								首先祝大家节日快乐~
 							</p>
+							
+							<p style="font-family: '微软雅黑';font-size: 20px;word-wrap: break-word;text-indent:2em;">
+								好久不维护自己的网址了，主要最近在搞webgl和自己的独立游戏，被实验缠身的我很是不爽啊，学习进度都被实验拉下来了<br/>
+								而且独立游戏进度也不怎么样，Animatior坑一大堆，AI开发也是一头包，还有下定决心不用iTween的我在移动旋转和摄像机控制上都被虐的很惨
+								所以看这个<br/>“V0.1 PlayerController和AIAndBoss”的代码质量，不重构是不可能的，其实吧被Bug淹没并且一路杀出来的我表示这真的很爽。
+							</p>
+							
+							<p style="font-family: '微软雅黑';font-size: 20px;word-wrap: break-word;text-indent:2em;">
+								好了废话不多说，这次我们来结算一下以前欠下的东西，毕竟被考倒了一次还是需要花时间补补的<br/>
+								如何进行场景的优化呢？<br/>
+								其实我知道的还不少。脸红的是当时紧张没答出来TAT<br/>
+								只说说自己用过的吧。<br/>
+							</p>
+							
+							<p style="font-family: '微软雅黑';font-size: 20px;word-wrap: break-word;text-indent:2em;">
+								1,不要过多的使用MonoBehavior，MB这个基类调用系统函数是用消耗性能的反射来的，尽量少继承MB这个基类吧<br />	
+							</p>
+							
+							<p style="font-family: '微软雅黑';font-size: 20px;word-wrap: break-word;text-indent:2em;">	
+								虚拟机的本质就是为了方便可移植，GC提升开发效率，但是unity的这个Mono对于内存是只拿不还的，这个就非常讨厌了，
+								还有Distory/Instance方法非常消耗内存，所以引申出的对象池什么的技术。
+								还有.log(我被卡死过)什么在那几个循环调用的函数里new，array什么的开启不起眼的堆内存，这些都是巨大的破坏。
+							</p>
+							
+							<p style="font-family: '微软雅黑';font-size: 20px;word-wrap: break-word;text-indent:2em;">
+								2,尽量减少复杂的网格碰撞器的使用，这个碰撞也是会消耗少部分内存的，而且据业内知情人士透露，没人会使用复杂的网格碰撞来力求真实。吃力不讨好的行为。<br/>
+							</p>
+							
+							<p style="font-family: '微软雅黑';font-size: 20px;word-wrap: break-word;text-indent:2em;">
+								3,尽量不要使用foreach，这玩意就不说了，让人又爱又恨的东西<br/>
+							</p>
+							
+							<p style="font-family: '微软雅黑';font-size: 20px;word-wrap: break-word;text-indent:2em;">
+								4,UI这个模块又是优化的重点，在NGUI里，最关键的是那个不起眼的UIPanel<br/>
+								核心就是不要把UIPanel塞的太大<br/>
+								UGUI用的不多，不过用起来还是挺顺手的。这个就不说了~
+							</p>
+							
+							<p style="font-family: '微软雅黑';font-size: 20px;word-wrap: break-word;text-indent:2em;">
+								5,烘培光照贴图，这个可以省去实时光照(GI)的计算消耗<br/>
+								但是，非常消耗时间，今天一套PBR Build了半个小时。。。
+							</p>
+							
 							<!--<a href="#service" class="btn btn-skin btn-scroll">I Want To Konw More</a>-->
 							<!--<img alt="140x140" src="v3/default3.jpg" />-->
 							<!--这是一些控件我会继续添加-->
+							
 						</div> 
 					</div>
 
@@ -133,7 +179,7 @@
 		<script src="../js/jquery.appear.js"></script>
 		<script src="../js/stellar.js"></script>
 		<script src="../js/nivo-lightbox.min.js"></script>
-		
+
 		<script src="../js/custom.js"></script>
 		<script src="../js/css3-animate-it.js"></script>
 		<!--<script src="../contactform/contactform.js"></script>-->
